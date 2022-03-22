@@ -29,6 +29,12 @@ namespace API
             services.AddControllers();
             services.AddApplicationServices();
             services.AddSwaggerDocumentation();
+            services.AddCors(options =>{
+                options.AddPolicy("CorsPolicy",policy =>
+                {
+                     policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
+                })
+            })
             
         }
 
