@@ -1,0 +1,11 @@
+<header class="mb-3  mt-3">
+    <span *ngIf="totalCount && totalCount> 0" class="text-warning">Showing
+        <strong>
+            {{(pageNumber-1)* pageSize+1}} -
+            {{pageNumber* pageSize
+            > totalCount ? totalCount
+            : pageNumber * pageSize
+            }}
+        </strong> of <strong>{{totalCount}}</strong> Products</span>
+    <span *ngIf=" totalCount === 0" class="text-warning"><strong>There are no results</strong></span>
+</header>

@@ -1,0 +1,52 @@
+<div class="container" style="margin-top:140px;">
+    <div class="row">
+
+        <section class="col-3">
+            <h5 class="text-warning mt-3 ms-3">Sort</h5>
+            <select (change)="onSortSelected($event.target.value)" class="form-select">
+                <option *ngFor="let sort of sortOptions" [value]="sort.value">{{sort.name}}</option>
+
+            </select>
+
+            <h5 class="text-warning mt-3 ms-3">Brands</h5>
+            <ul class="list-group">
+                <li class="list-group-item" [class.active]="brand.id ===this.shopParams.brandId" [value]="brand.id"
+                    (click)="onBrandSelected(brand.id)" *ngFor="let brand of brands" aria-current="true">{{brand.name}}
+                </li>
+            </ul>
+            <br />
+            <h5 class="text-warning ms-3">Types</h5>
+            <ul class="list-group">
+                <li class="list-group-item" [class.active]="type.id ===this.shopParams.typeId" [value]="type.id"
+                    (click)="onTypeSelected(type.id)" *ngFor="let type of types" aria-current="true">{{type.name}}</li>
+            </ul>
+        </section>
+
+        <section class="col-9">
+            <div class="d-flex justify-content-between align-items-center">
+                <app-pagination-header
+                [totalCount]="totalCount"
+                [pageSize]="this.shopParams.pageSize"
+                [pageNumber]="this.shopParams.pageNumber"
+                ></app-pagination-header>
+                <div class="d-flex mt-2">
+                    <input class="form-control me-2 mt-2 mb-2" (keyup.enter)="onSearch()" #search style="width: 300px;" placeholder="Search Items"
+                        type="text">
+                    <button (click)="onSearch()" class="btn btn-primary me-2 mt-2 mb-2">Search</button>
+                    <button (click)="onReset()" class="btn btn-success mt-2 mb-2">Reset</button>
+                </div>
+            </div>
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col mb-3" *ngFor="let item of products">
+                    <app-product-item [product]="item"></app-product-item>
+                </div>
+            </div>
+         <app-pager
+         [totalCount]="totalCount"
+         [pageSize]="shopParams.pageSize"
+         (pageChanged)="onPageChange($event)"   
+         ></app-pager>
+        </section>
+    </div>
+</div>
