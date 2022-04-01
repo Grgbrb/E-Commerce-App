@@ -8,6 +8,7 @@ import { CoreModule } from './core/core.module';
 import { ShopModule } from './shop/shop.module';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
+import { HomeModule } from './home/home.module';
 
 registerLocaleData(localeDe, 'de');
 
@@ -21,7 +22,7 @@ registerLocaleData(localeDe, 'de');
     BrowserAnimationsModule,
     HttpClientModule,
     CoreModule,
-    ShopModule
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
